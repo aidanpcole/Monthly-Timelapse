@@ -14,7 +14,7 @@ const mapvars = {
   TWSEV: "https://raw.githubusercontent.com/aidanpcole/India-Timelapse/main/data/DataForMap/simpletimes2017pm25.geojson",
   TWEIG: "https://raw.githubusercontent.com/aidanpcole/India-Timelapse/main/data/DataForMap/simpletimes2018pm25.geojson",
   TWNIN: "https://raw.githubusercontent.com/aidanpcole/India-Timelapse/main/data/DataForMap/simpletimes2019pm25.geojson",
-  PMTFV: "https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/DataForMap/simplecensusdistricts2019.geojson"
+  PMTFV: "https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/DataForMap/monthlydistricts2019.geojson"
 };
 
 //const pointLayers = ["coolingCenters", "emergencyP", "pools", "parks", "hosp"]; // i think this needs to be a dictionary
