@@ -123,7 +123,7 @@ var layerDec = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/
 
 
 
-layerGroup = L.layerGroup([layerJan,layerFeb,layerMar,layerApr,layerMay,layerJun,layerJuly,layerAug,layerSep,layerOct,layerNov,layerDec]);
+layerGroup = L.layerGroup([layerJan,layerFeb,layerMar,layerApr,layerMay,layerJun,layerJul,layerAug,layerSep,layerOct,layerNov,layerDec]);
 var sliderControl = L.control.sliderControl({position: "topright", layer: layerGroup, timeAttribute: 'time', follow: 1, startTimeIdx: 0, timeStrLength: 4, alwaysShowDate: true});
 map.addControl(sliderControl);
 setInterval(function(){
