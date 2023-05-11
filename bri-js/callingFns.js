@@ -3,10 +3,10 @@
 /* set up with zoom 5, may change, changed lat
 and long from 34,0836417742618, -118.5298649280784 */
 var bounds = new L.LatLngBounds(
-    new L.LatLng(6.0152277, 58.6560663),
-    new L.LatLng(35.8752762, 99.2332081));
+    new L.LatLng(6.4430506, 58.7873306),
+    new L.LatLng(36.1958244, 99.3334311));
 
-let map = L.map('map', {zoomControl: false, center: bounds.getCenter(),maxBounds: bounds,maxBoundsViscosity: 1.0, maxZoom:9, minZoom:4 }).setView([20.94525, 78.9446], 3);
+let map = L.map('map', {zoomControl: false, center: bounds.getCenter(),maxBounds: bounds,maxBoundsViscosity: 1.0, maxZoom:9, minZoom:4 }).setView([21.31944, 79.0604], 3);
 map.fitBounds(bounds);
 
 const basemap = 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
@@ -49,68 +49,81 @@ L.control.browserPrint({position: 'bottomright'}).addTo(map);
 let dataT = [];
 
 
-var layer2010 = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/ReferenceData/PM25_2010.png", bounds, {
+var layerJan = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Jan_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2010"
+    time: "2021-01"
 });
 
-var layer2011 = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/ReferenceData/PM25_2011.png", bounds, {
+var layerFeb = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Feb_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2011"
+    time: "2021-02"
 });
 
-var layer2012 = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/ReferenceData/PM25_2012.png", bounds, {
+var layerMar = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Mar_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2012"
+    time: "2021-03"
 });
 
-var layer2013 = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/ReferenceData/PM25_2013.png", bounds, {
+var layerApr = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Apr_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2013"
+    time: "2021-04"
 });
 
-var layer2014 = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/ReferenceData/PM25_2014.png", bounds, {
+var layerMay = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/May_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2014"
+    time: "2021-05"
 });
 
-var layer2015 = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/ReferenceData/PM25_2015.png", bounds, {
+var layerJun = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Jun_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2015"
+    time: "2021-06"
 });
 
-var layer2016 = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/ReferenceData/PM25_2016.png", bounds, {
+var layerJul = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Jul_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2016"
+    time: "2021-07"
 });
 
-var layer2017 = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/ReferenceData/PM25_2017.png", bounds, {
+var layerAug = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Aug_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2017"
+    time: "2021-08"
 });
 
-var layer2018 = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/ReferenceData/PM25_2018.png", bounds, {
+var layerSep = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Sep_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2018"
+    time: "2021-09"
 });
 
-var layer2019 = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/ReferenceData/PM25_2019.png", bounds, {
+var layerOct = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Oct_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2019"
+    time: "2021-10"
+});
+
+var layerNov = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Nov_2021.png", bounds, {
+    opacity: 1.0,
+    interactive: false,
+    time: "2021-11"
+});
+
+var layerDec = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Dec_2021.png", bounds, {
+    opacity: 1.0,
+    interactive: false,
+    time: "2021-12"
 });
 
 
-layerGroup = L.layerGroup([layer2010,layer2011,layer2012,layer2013,layer2014,layer2015,layer2016,layer2017,layer2018,layer2019]);
+
+layerGroup = L.layerGroup([layerJan,layerFeb,layerMar,layerApr,layerMay,layerJun,layerJuly,layerAug,layerSep,layerOct,layerNov,layerDec]);
 var sliderControl = L.control.sliderControl({position: "topright", layer: layerGroup, timeAttribute: 'time', follow: 1, startTimeIdx: 0, timeStrLength: 4, alwaysShowDate: true});
 map.addControl(sliderControl);
 setInterval(function(){
