@@ -185,7 +185,13 @@ input.largerCheck {
   text-align: center;
 }
 
-
+#export-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  z-index: 400;
+}
 
 .popupTable td{
   padding: 0.5rem;

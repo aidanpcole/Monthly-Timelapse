@@ -6,7 +6,12 @@ var bounds = new L.LatLngBounds(
     new L.LatLng(6.4430506, 58.7873306),
     new L.LatLng(36.1958244, 99.3334311));
 
-let map = L.map('map', {zoomControl: false, center: bounds.getCenter(),maxBounds: bounds,maxBoundsViscosity: 1.0, maxZoom:9, minZoom:4 }).setView([21.31944, 79.0604], 3);
+var maxbounds = new L.LatLngBounds(
+    new L.LatLng(-10.138541709445434, 10.24718978124926),
+    new L.LatLng(65.929460176933446, 160.11828353124895)
+)
+
+let map = L.map('map', {zoomControl: false, center: bounds.getCenter(),maxBounds: maxbounds,maxBoundsViscosity: 1.0, maxZoom:9, minZoom:4 }).setView([21.31944, 79.0604], 3);
 map.fitBounds(bounds);
 
 const basemap = 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
@@ -36,8 +41,7 @@ let baseLayers = {
     "White Canvas": WhiteCanvas
 };
 
-
-let layerControl = new L.control.layers(null, baseLayers, {position: 'bottomright',collapsed:false});
+var layerControl = L.control.layers(baseLayers, null, {position: 'bottomright',collapsed:false}).addTo(map);
 map.addLayer(WhiteCanvas);
 map.addControl(layerControl);
 
@@ -52,73 +56,73 @@ let dataT = [];
 var layerJan = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Jan_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-01"
+    time: "2021-Jan"
 });
 
 var layerFeb = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Feb_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-02"
+    time: "2021-Feb"
 });
 
 var layerMar = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Mar_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-03"
+    time: "2021-Mar"
 });
 
 var layerApr = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Apr_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-04"
+    time: "2021-Apr"
 });
 
 var layerMay = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/May_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-05"
+    time: "2021-May"
 });
 
 var layerJun = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Jun_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-06"
+    time: "2021-Jun"
 });
 
 var layerJul = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Jul_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-07"
+    time: "2021-Jul"
 });
 
 var layerAug = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Aug_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-08"
+    time: "2021-Aug"
 });
 
 var layerSep = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Sep_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-09"
+    time: "2021-Sep"
 });
 
 var layerOct = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Oct_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-10"
+    time: "2021-Oct"
 });
 
 var layerNov = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Nov_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-11"
+    time: "2021-Nov"
 });
 
 var layerDec = new L.ImageOverlay("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/Dec_2021.png", bounds, {
     opacity: 1.0,
     interactive: false,
-    time: "2021-12"
+    time: "2021-Dec"
 });
 
 
@@ -132,7 +136,7 @@ setInterval(function(){
             var step = ++current % max;
             $('#leaflet-slider').slider("value", step);
             sliderControl.slide(null, {value: step});
-        }, 1000);
+        }, 1250);
 sliderControl.startSlider();
 initializeMap();
 L.Control.geocoder({position: 'topright', placeholder: 'Search for location...'}).addTo(map);
@@ -178,4 +182,21 @@ function addMarkers(url) { // THIS IS for pools, cooling centers and hosp
 }
 
 
-//addMarkers("https://raw.githubusercontent.com/aidanpcole/Raster-Timelapse/main/data/DataForMap/15mostpollutedcities.geojson");
+///addMarkers("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/15mostpollutedcities.geojson");
+
+
+
+$.getJSON("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/wind-global.json", function(data) {
+  var velocityLayer = L.velocityLayer({
+    displayValues: true,
+    displayOptions: {
+      velocityType: "Global Wind",
+      position: "bottomright",
+      emptyString: "No wind data"
+    },
+    data: data,
+    maxVelocity: 15
+  });
+
+  layerControl.addOverlay(velocityLayer, "Wind - Global");
+});
