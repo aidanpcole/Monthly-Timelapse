@@ -136,7 +136,7 @@ setInterval(function(){
             var step = ++current % max;
             $('#leaflet-slider').slider("value", step);
             sliderControl.slide(null, {value: step});
-        }, 1250);
+        }, 1500);
 sliderControl.startSlider();
 initializeMap();
 L.Control.geocoder({position: 'topright', placeholder: 'Search for location...'}).addTo(map);
@@ -188,7 +188,7 @@ function addMarkers(url) { // THIS IS for pools, cooling centers and hosp
 
 $.getJSON("https://raw.githubusercontent.com/aidanpcole/Monthly-Timelapse/main/data/DataForMap/wind-global.json", function(data) {
   var velocityLayer = L.velocityLayer({
-    displayValues: true,
+    displayValues: false,
     displayOptions: {
       velocityType: "Global Wind",
       position: "bottomright",
